@@ -1,0 +1,2 @@
+# story-mode
+Rarity: Legendary
