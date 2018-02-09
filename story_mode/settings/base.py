@@ -11,7 +11,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'personae',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'account_login'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -24,6 +40,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'story_mode.urls'
+
+SITE_ID = 1
 
 TEMPLATES = [
     {
