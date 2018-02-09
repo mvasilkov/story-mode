@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+
+{% block title %}Create a persona{% endblock %}
+
+{% block content %}
+    <h1>Create a persona</h1>
+    <form action="" method="post">
+        {{ form.as_p }}
+        <p>
+            {% csrf_token %}
+            <input type="submit" value="Create">
+        </p>
+    </form>
+{% endblock %}

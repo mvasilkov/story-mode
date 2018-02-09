@@ -18,17 +18,6 @@ INSTALLED_APPS = [
     'personae',
 ]
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'account_login'
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,6 +68,25 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
+
+# Authentication
+# https://docs.djangoproject.com/en/2.0/topics/auth/
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_PRESERVE_USERNAME_CASING = False
+ACCOUNT_USERNAME_MIN_LENGTH = 6
+ACCOUNT_USERNAME_VALIDATORS = 'personae.validators.username_val'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'account_login'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
